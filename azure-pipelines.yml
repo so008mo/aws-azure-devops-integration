@@ -22,19 +22,6 @@ steps:
     cdk synth
   displayName: 'npm install and build'
   
-- task: CopyFiles@2
-  displayName: 'Copy Files to Artifact Staging Directory'
-  inputs:
-    Contents: |
-    /*
-    TargetFolder: '$(Build.ArtifactStagingDirectory)'
-
-- task: PublishBuildArtifacts@1
-  displayName: Export files
-  inputs:
-   PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-   ArtifactName: build_cdk
-
 #- task: AWSShellScript@1
 #  inputs:
 #    awsCredentials: 'AWS-SANDBOX'
