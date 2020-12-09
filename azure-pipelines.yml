@@ -25,7 +25,8 @@ steps:
 - task: PublishBuildArtifacts@1
   inputs:
    pathtoPublish: /tmp/dev_artifacts
-   artifactName: dev_artifacts 
+   artifactName: dev_artifacts
+  displayName: Export Dev Artifacts
 #- task: AWSShellScript@1
 #  inputs:
 #    awsCredentials: 'AWS-SANDBOX'
