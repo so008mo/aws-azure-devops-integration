@@ -19,14 +19,9 @@ steps:
     sudo npm install -g aws-cdk
     npm install
     npm run build
-    cdk synth --stage dev --region us-west-2 --package /tmp/dev_artifacts
+    cdk synth
   displayName: 'npm install and build'
 
-- task: PublishBuildArtifacts@1
-  inputs:
-   pathtoPublish: /tmp/dev_artifacts
-   artifactName: dev_artifacts
-  displayName: Export Dev Artifacts
 #- task: AWSShellScript@1
 #  inputs:
 #    awsCredentials: 'AWS-SANDBOX'
