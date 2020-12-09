@@ -19,16 +19,21 @@ steps:
     sudo npm install -g aws-cdk
     npm install
     npm run build
-    cdk synth
+    cdk synth --stage dev --region us-west-2 --package /tmp/dev_artifacts
   displayName: 'npm install and build'
-- task: AWSShellScript@1
+
+- task: PublishBuildArtifacts@1
   inputs:
-    awsCredentials: 'AWS-SANDBOX'
-    regionName: 'us-east-1'
-    scriptType: 'inline'
-    inlineScript: 'cdk deploy --ci --require-approval never'
-    disableAutoCwd: true
-    workingDirectory: '$(System.DefaultWorkingDirectory)'
-    failOnStandardError: false
-  displayName: 'cdk deploy'
+   pathtoPublish: /tmp/dev_artifacts
+   artifactName: dev_artifacts 
+#- task: AWSShellScript@1
+#  inputs:
+#    awsCredentials: 'AWS-SANDBOX'
+#    regionName: 'us-east-1'
+#    scriptType: 'inline'
+#    inlineScript: 'cdk deploy --ci --require-approval never'
+#    disableAutoCwd: true
+#    workingDirectory: '$(System.DefaultWorkingDirectory)'
+#    failOnStandardError: false
+#  displayName: 'cdk deploy'
 
